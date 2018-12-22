@@ -5,5 +5,3 @@ window.requestAnimationFrame()
 window.requestIdleCallback()
 
 https://segmentfault.com/a/1190000008829958
-
-
