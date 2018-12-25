@@ -6,14 +6,6 @@
  * 2，return：【1】构造函数没有 return 时候，则返回实例对象；【2】return 后面是一个Object类型 或者Array的对象（比如名称为 obj），则返回这个对象（obj）；【3】return 后面是基本数据类型或者 null，则返回实例对象
  */
 
-function Person(name) {
-  this.name = name;
-}
-
-Person.prototype.go = function() {
-  console.log(this.name);
-};
-
 function objectFactory(fn, ...args) {
   // 创建一个新对象 obj
   const obj = new Object();
@@ -26,6 +18,14 @@ function objectFactory(fn, ...args) {
 }
 
 // 测试
+function Person(name) {
+  this.name = name;
+}
+
+Person.prototype.go = function() {
+  console.log(this.name);
+};
+
 const person = objectFactory(Person, 'tom');
 console.log(person); // {name: 'tom'}
 person.go(); // 'tom'
