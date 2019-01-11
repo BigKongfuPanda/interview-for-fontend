@@ -3,6 +3,8 @@
  * 另外，为了支持链式 .then，需要在 then 函数中返回当前 _promise 实例对象
  */
 
+ // Promise 实现 https://zhuanlan.zhihu.com/p/47935227
+
 class _Promise {
   // task: 实例化时传给Promise构造函数的参数，为函数类型
   constructor(task) {
