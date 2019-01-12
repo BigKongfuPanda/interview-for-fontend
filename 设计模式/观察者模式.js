@@ -16,9 +16,9 @@ class Subject {
 
   // 添加依赖
   attach(observer) {
-  if (observer && !this.observers.includes(observer)) {
-    this.observers.push(observer);
-  }
+    if (observer && !this.observers.includes(observer)) {
+      this.observers.push(observer);
+    }
   }
 
   // 通知依赖进行更新
