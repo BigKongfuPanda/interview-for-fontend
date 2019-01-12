@@ -1,4 +1,7 @@
 /**
+ * https://www.jianshu.com/p/f0f22398d25d
+ * https://www.cnblogs.com/lovesong/p/5272752.html
+ * https://blog.csdn.net/it_rod/article/details/79516578
  * 事件发布订阅模式中，最常见的就是 node 中的 EventEmiter
  */
 
