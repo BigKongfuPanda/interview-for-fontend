@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>flex布局总结</title>
+</head>
+<style type="text/css">
+  * {
+    padding: 0;
+    margin: 0;
+  }
+  /* .list {
+    list-style: none;
+    width: 400px;
+    height: 400px;
+    background: green;
+    display: flex;
+    display: -webkit-flex; */
+    /* flex-direction: row-reverse; */
+    /* flex-direction: row-reverse; */
+    /* flex-direction: column; */
+    /* flex-direction: column-reverse; */
+    /* justify-content: space-between; */
+    /* align-items: flex-end; */
+  /* } */
+  
+  /* .item {
+    width: 30px;
+    height: 30px;
+    background: red;
+    flex: 1;
+  }
+  .item:first-of-type {
+    flex: 2
+  } */
+  .InputAddOn {
+    display: flex;
+  }
+
+  .InputAddOn-field {
+    flex: 1;
+  }
+</style>
+<body>
+  <!-- Flex 布局教程：语法篇 http://www.ruanyifeng.com/blog/2015/07/flex-grammar.html -->
+  <!-- Flex 布局教程：实例篇 http://www.ruanyifeng.com/blog/2015/07/flex-examples.html -->
+  <!-- Flexbox 布局的最简单表单 http://www.ruanyifeng.com/blog/2018/10/flexbox-form.html -->
+  <!-- 设为 Flex 布局以后，子元素的float、clear和vertical-align属性将失效。 -->
+
+  <!-- <ul class="list">
+    <li class="item">1</li>
+    <li class="item">2</li>
+    <li class="item">3</li>
+    <li class="item">4</li>
+    <li class="item">5</li>
+  </ul> -->
+  <div class="InputAddOn">
+    <span class="InputAddOn-item">...</span>
+    <input class="InputAddOn-field">
+    <button class="InputAddOn-item">...</button>
+  </div>
+</body>
+</html>
