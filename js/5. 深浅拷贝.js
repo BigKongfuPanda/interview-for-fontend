@@ -6,6 +6,13 @@
 
 
 // jQuery 版本
+/**
+ *  jQuery.extend( [deep ], target, object1 [, objectN ] )
+ *  deep: Boolean. true-深拷贝，false-浅拷贝
+ *  target: 被拷贝到的对象
+ *  object1: 拷贝的对象
+ *  objectN: 拷贝的对象
+ */ 
 $.fn.extend = function () {
   //jquery喜欢在初始定义好所有的变量
   let options,//  被拷贝的对象
@@ -64,4 +71,71 @@ $.fn.extend = function () {
   }
   // 返回新的拷贝完的对象
   return target;
+}
+
+// 另一版本 https://github.com/yygmind/blog/issues/29
+function deepClone(source, hash = new WeakMap()) {
+  // 首先判断source是否为Object类型，同时排除null
+  if (!isObject(source)) {
+    return source;
+  }
+  if (hash.has(source)) {
+    return hash.get(source);
+  }
+  let target = Array.isArray(source) ? [] : {};
+  Object.keys(source).forEach(key => {
+    if (isObject(source[key])) {
+      target[key] = deepClone(source[key], hash);
+    } else {
+      target[key] = source[key];
+    }
+  });
+  hash.set(source, target);
+  return target;
+}
+
+// 判断是否为对象或数组，排除null
+function isObject(obj) {
+  return typeof obj === 'object' && obj !== null;
+}
+
+// 上面使用递归的方式，最大的缺点是容易爆栈，可以采用树的遍历 https://segmentfault.com/a/1190000016672263
+function deepClone(source) {
+  const root = {};
+
+  const loopList = [
+    {
+      parent: root,
+      key: undefined,
+      data: source
+    }
+  ];
+
+  while(loopList.length) {
+    // 深度优先
+    const node = loopList.pop();
+    const parent = node.parent;
+    const key = node.key;
+    const data = node.data;
+
+    // 初始化赋值目标
+    let res = parent;
+    if (typeof key !== 'undefined') {
+      res = parent[key] = {};
+    }
+
+    Object.keys(data).forEach(k => {
+      if (typeof data[k] === 'object') {
+        loopList.push({
+          parent: res,
+          key: k,
+          data: data[k]
+        });
+      } else {
+        res[k] = data[k];
+      }
+    });
+  }
+
+  return root;
 }
