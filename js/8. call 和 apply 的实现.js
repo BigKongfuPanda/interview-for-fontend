@@ -12,7 +12,6 @@ Function.prototype._call = function(context) {
   const symbol = Symbol();
   context[symbol] = this;
   const result = context[symbol](...args);
-  context[symbol](...args);
   delete context[symbol];
   return result;
 }
@@ -25,7 +24,7 @@ Function.prototype._apply = function(context, arr) {
   context[symbol] = this;
 
   if(!arr) {
-    result = context[symbol]
+    result = context[symbol]();
   } else {
     result = context[symbol](...arr);
   }
