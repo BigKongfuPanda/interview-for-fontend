@@ -99,7 +99,7 @@ function isObject(obj) {
   return typeof obj === 'object' && obj !== null;
 }
 
-// 上面使用递归的方式，最大的缺点是容易爆栈，可以采用树的遍历 https://segmentfault.com/a/1190000016672263
+// 上面使用递归的方式，最大的缺点是容易栈溢出，可以采用树的遍历 https://segmentfault.com/a/1190000016672263
 function deepClone(source) {
   const root = {};
 
