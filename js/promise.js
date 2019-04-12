@@ -33,3 +33,33 @@ new _Promise((resolve, reject) => {
 }, err => {
   console.log(err);
 });
+
+function promiseAll(promises) {
+  return new Promise((resolve, reject) => {
+    if (!Array.isArray(promises)) {
+      return reject(new TypeError('arguments must be an array'));
+    }
+    let resolvedCounter = 0;
+    let promiseNum = promises.length;
+    let result = [];
+
+    promises.forEach(promise => {
+      Promise.resolve(promise).then(function resolvedHandler(value) {
+        resolvedCounter++;
+        result.push(value);
+        if (promiseNum === resolvedCounter) {
+          return resolve(result);
+        }
+      }, function rejectedHandler(reason) {
+        return reject(reason);
+      });
+    });
+  });
+}
+
+// 试验：
+let p1 = Promise.resolve(1);
+let p2 = Promise.resolve(2);
+
+promiseAll([p1, p2]).then(result => console.log(result));
+// [1, 2]
