@@ -34,6 +34,7 @@ new _Promise((resolve, reject) => {
   console.log(err);
 });
 
+// Promise.all 实现
 function promiseAll(promises) {
   return new Promise((resolve, reject) => {
     if (!Array.isArray(promises)) {
