@@ -36,7 +36,7 @@ class EventEmiter {
       this.off(type, onceWrap);
     }
     this.on(type, onceWrap);
-    // 由于上面注册的是 onceWrap 监听器，而与 once 注册的 listener 监听器不是同一个函数，所以需要保存一下 listener 监听器，作为 去除的时候用。
+    // 由于on上面注册的是 onceWrap 监听器，而与 once 注册的 listener 监听器不是同一个函数，所以需要保存一下 listener 监听器，作为 去除的时候用。
     onceWrap.listener = listener;
   }
 
@@ -80,3 +80,44 @@ eventEmiter.on('click', counter => {
   console.log(counter);
 });
 eventEmiter.emit('click', 1); // 1
+
+class EventEmitter {
+  constructor() {
+    this.events = new Map();
+  }
+
+  on(type, listener) {
+    const listeners = this.events.get(type);
+    if (!listeners) {
+      this.events.set(type, [listener]);
+    } else {
+      listeners.push(listener);
+    }
+    return this;
+  }
+
+  emit(type) {
+    const listeners = this.events.get(type);
+    const args = [...arguments];
+    listeners.forEach(listener => {
+      listener.apply(this, args);
+    });
+    return this;
+  }
+
+  off(type, listener) {
+    const listeners = this.events.get(type);
+    const lastIndex = this.events.lastIndexOf(listener)
+    if (lastIndex > -1) {
+      listeners.splice(lastIndex, 1);
+    }
+  }
+
+  removeAllListeners(type) {
+    if (!type) {
+      this.events = new Map();
+    } else {
+      this.events.set(type, []);
+    }
+  }
+}
