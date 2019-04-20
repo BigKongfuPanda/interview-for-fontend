@@ -98,6 +98,7 @@ function watcher(myFun) {
   target(); 
   target = null;
 }
+
 watcher(() => {
   data.total = data.price * data.quantity;
 });

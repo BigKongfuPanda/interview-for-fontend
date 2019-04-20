@@ -36,7 +36,7 @@ class EventEmiter {
       this.off(type, onceWrap);
     }
     this.on(type, onceWrap);
-    // 由于上面注册的是 onceWrap 监听器，而与 once 注册的 listener 监听器不是同一个函数，所以需要保存一下 listener 监听器，作为 去除的时候用。
+    // 由于on上面注册的是 onceWrap 监听器，而与 once 注册的 listener 监听器不是同一个函数，所以需要保存一下 listener 监听器，作为 去除的时候用。
     onceWrap.listener = listener;
   }
 
