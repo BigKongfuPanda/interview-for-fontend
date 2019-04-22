@@ -1,3 +1,5 @@
+// 参考资料 https://juejin.im/post/5b83cb5ae51d4538cc3ec354, https://juejin.im/post/5cbafea5e51d456e4f4d2a09
+
 const PENDING = 'PENDING';
 const FULLFILLED = 'FULLFILLED';
 const REJECTED = 'REJECTED';
@@ -41,15 +43,13 @@ class MyPromise {
     const run = () => {
       // 依次执行成功队列中的函数，并清空队列
       const runFullfilled = (value) => {
-        this._fullfilledQueues.forEach(cb => {
-          cb();
-        });
+        this._fullfilledQueues.forEach(cb => cb());
+        this._fullfilledQueues.length = 0;
       }
       // 一次执行失败队列中的函数，并清空队列
       const runRejected = (value) => {
-        this._rejectedQueues.forEach(cb => {
-          cb();
-        });
+        this._rejectedQueues.forEach(cb => cb());
+        this._rejectedQueues.length = 0;
       }
 
       /**
