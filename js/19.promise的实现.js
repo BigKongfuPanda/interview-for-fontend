@@ -122,7 +122,7 @@ class MyPromise {
               res.then(onFullfilledNext, onRejectedNext);
             } else {
               //否则会将返回结果直接作为参数，传入下一个then的回调函数，并立即执行下一个then的回调函数
-              onFullfilled(res);
+              onFullfilledNext(res);
             }
           }
         } catch (error) {
