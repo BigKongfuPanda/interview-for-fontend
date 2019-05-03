@@ -30,4 +30,3 @@ Function.prototype._bind = function(context) {
   // 返回一个新函数
   return newFun;
 }
-
