@@ -14,7 +14,7 @@ class Queue {
       return null; // 如果两个栈都是空的，那么队列中就没有元素
     }
     if (this.stack2.isEmpty()) {
-      while(!this.stack1.isEmpty()) {
+      while (!this.stack1.isEmpty()) {
         this.stack2.push(this.stack1.pop());
       }
     }
