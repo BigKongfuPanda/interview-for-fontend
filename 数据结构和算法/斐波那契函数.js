@@ -4,7 +4,7 @@ function fib(n) {
   if (n <= 2) {
     return 1;
   }
-  return fib(n-2) + fib(n-1);
+  return fib(n - 2) + fib(n - 1);
 }
 
 // 非递归
@@ -26,7 +26,7 @@ function fib(n) {
   if (n <= 2) {
     return 1;
   }
-  for(let i = 1; i <= n - 2; i++) {
+  for (let i = 1; i <= n - 2; i++) {
     let head = list.shift();
     let next = head + list[0];
     list.push(next);
