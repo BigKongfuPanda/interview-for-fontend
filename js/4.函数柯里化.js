@@ -3,10 +3,15 @@
 // curry 函数的简单实现
 function Curry(fn) {
   const args = Array.prototype.slice.call(arguments, 1);
+  const len = fn.length;
   return function() {
     const _args = [...arguments];
     const totalArgs = args.concat(_args);
-    return fn.apply(null, totalArgs);
+    if (totalArgs.length < len) {
+      return Curry.apply(this, totalArgs)
+    } else {
+      return fn.apply(null, totalArgs);
+    }
   }
 }
 
