@@ -57,3 +57,29 @@ add(1)(2)(3)                // 6
 add(1, 2, 3)(4)             // 10
 add(1)(2)(3)(4)(5)          // 15
 add(2, 6)(1)     
+
+
+//普通函数
+function fn(a,b,c,d,e) {
+  return a + b + c + d + e;
+}
+//生成的柯里化函数
+let _fn = curry(fn);
+
+_fn(1,2,3,4,5);     // print: 1,2,3,4,5
+_fn(1)(2)(3,4,5);   // print: 1,2,3,4,5
+_fn(1,2)(3,4)(5);   // print: 1,2,3,4,5
+_fn(1)(2)(3)(4)(5); // print: 1,2,3,4,5
+
+function curry3(fn, args) {
+  const len = fn.length;
+  let args = args || []
+  return function() {
+    const newArgs = [...args, ...arguments]
+    if (newArgs.length < len) {
+      return curry3.call(this, fn, newArgs)
+    } else {
+      return fn.apply(this, newArgs)
+    }
+  }
+}
