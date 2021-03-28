@@ -2,11 +2,15 @@
 
 // curry 函数的简单实现
 function Curry(fn) {
-  const args = Array.prototype.slice.call(arguments, 1);
+  const currArgs = Array.prototype.slice.call(arguments, 1);
+  const len = fn.length;
   return function() {
-    const _args = [...arguments];
-    const totalArgs = args.concat(_args);
-    return fn.apply(null, totalArgs);
+    const args = [...currArgs, ...arguments]
+    if (totalArgs.length < len) {
+      return Curry(fn, args)
+    } else {
+      return fn.apply(null, args);
+    }
   }
 }
 
