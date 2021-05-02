@@ -3,7 +3,7 @@
 JavaScript实现（从小到大排序）：
  */
 
- function selectionSort(arr) {
+function selectionSort(arr) {
   let len = arr.length;
   for (let i = 0; i < len; i++) {
     let min = i;
@@ -17,4 +17,4 @@ JavaScript实现（从小到大排序）：
     }
   }
   return arr;
- }
+}

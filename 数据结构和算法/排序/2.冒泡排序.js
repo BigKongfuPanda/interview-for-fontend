@@ -3,14 +3,14 @@
 冒泡排序是最简单的排序方法，容易理解、实现简单，但是冒泡排序是效率最低的排序算法，由于算法嵌套了两轮循环（将数组遍历了n遍），所以时间复杂度为O(n^2)。最好的情况下，给出一个已经排序的数组进行冒泡排序，时间复杂度也为O(n)。
  */
 
- function bubbleSort(arr) {
-   let len = arr.length;
-   for (let i = 0; i < len; i++) {
-     for (let j = 0; j < len - 1 - i; j++) {
-       if (arr[j] > arr[j+1]) {
-         [arr[j], arr[j+1]] = [arr[j+1], arr[j]];
-       }
-     }
-   }
-   return arr;
- }
+function bubbleSort(arr) {
+  let len = arr.length;
+  for (let i = 0; i < len; i++) {
+    for (let j = 0; j < len - 1 - i; j++) {
+      if (arr[j] > arr[j + 1]) {
+        [arr[j], arr[j + 1]] = [arr[j + 1], arr[j]];
+      }
+    }
+  }
+  return arr;
+}
