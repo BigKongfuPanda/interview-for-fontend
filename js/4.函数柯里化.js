@@ -6,7 +6,7 @@ function Curry(fn) {
   const len = fn.length;
   return function() {
     const args = [...currArgs, ...arguments]
-    if (totalArgs.length < len) {
+    if (args.length < len) {
       return Curry(fn, args)
     } else {
       return fn.apply(null, args);
